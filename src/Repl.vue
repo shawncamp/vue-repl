@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import SplitPane from './SplitPane.vue'
-import Output from './output/Output.vue'
+// import SplitPane from './SplitPane.vue'
+// import Output from './output/Output.vue'
 import { type Store, useStore } from './store'
-import { computed, provide, toRefs, useTemplateRef } from 'vue'
+import {
+  // computed,
+  provide,
+  toRefs,
+  // useTemplateRef
+} from 'vue'
 import {
   type EditorComponentType,
-  injectKeyPreviewRef,
+  // injectKeyPreviewRef,
   injectKeyProps,
 } from './types'
 import EditorContainer from './editor/EditorContainer.vue'
@@ -68,38 +73,38 @@ if (!props.editor) {
   throw new Error('The "editor" prop is now required.')
 }
 
-const outputRef = useTemplateRef('output')
+// const outputRef = useTemplateRef('output')
 
 props.store.init()
 
-const editorSlotName = computed(() => (props.layoutReverse ? 'right' : 'left'))
-const outputSlotName = computed(() => (props.layoutReverse ? 'left' : 'right'))
+// const editorSlotName = computed(() => (props.layoutReverse ? 'right' : 'left'))
+// const outputSlotName = computed(() => (props.layoutReverse ? 'left' : 'right'))
 
 provide(injectKeyProps, {
   ...toRefs(props),
   autoSave,
 })
-provide(
-  injectKeyPreviewRef,
-  computed(() => outputRef.value?.previewRef?.container ?? null),
-)
+// provide(
+//   injectKeyPreviewRef,
+//   computed(() => outputRef.value?.previewRef?.container ?? null),
+// )
 
 /**
  * Reload the preview iframe
  */
-function reload() {
-  outputRef.value?.reload()
-}
+// function reload() {
+//   outputRef.value?.reload()
+// }
 
-defineExpose({ reload })
+//defineExpose({ reload })
 </script>
 
 <template>
   <div class="vue-repl">
-    <SplitPane :layout="layout">
-      <template #[editorSlotName]>
-        <EditorContainer :editor-component="editor" />
-      </template>
+    <!-- <SplitPane :layout="layout">
+      <template #[editorSlotName]> -->
+    <EditorContainer :editor-component="editor" />
+    <!-- </template>
       <template #[outputSlotName]>
         <Output
           ref="output"
@@ -108,7 +113,7 @@ defineExpose({ reload })
           :ssr="!!props.ssr"
         />
       </template>
-    </SplitPane>
+    </SplitPane> -->
   </div>
 </template>
 

@@ -2,12 +2,9 @@ import { Component } from 'vue';
 import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
 import { ComputedRef } from 'vue';
-import { CreateComponentPublicInstanceWithMixins } from 'vue';
 import * as defaultCompiler from 'vue/compiler-sfc';
 import { DefineComponent } from 'vue';
 import { editor } from 'monaco-editor-core';
-import { GlobalComponents } from 'vue';
-import { GlobalDirectives } from 'vue';
 import { version as languageToolsVersion } from '@vue/language-service/package.json';
 import type * as monaco from 'monaco-editor-core';
 import { PublicProps } from 'vue';
@@ -49,7 +46,7 @@ declare class File_2 {
     };
     editorViewState: editor.ICodeEditorViewState | null;
     constructor(filename: string, code?: string, hidden?: boolean);
-    get language(): "css" | "vue" | "typescript" | "html" | "javascript";
+    get language(): "typescript" | "html" | "css" | "vue" | "javascript";
 }
 export { File_2 as File }
 
@@ -68,7 +65,7 @@ export declare const Preview: DefineComponent<    {
 show: boolean;
 ssr: boolean;
 }, {
-reload: typeof reload_2;
+reload: typeof reload;
 container: Readonly<ShallowRef<HTMLDivElement | null>>;
 }, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{
 show: boolean;
@@ -82,25 +79,13 @@ container: HTMLDivElement;
  */
 declare function reload(): void;
 
-/**
- * Reload the preview iframe
- */
-declare function reload_2(): void;
-
-export declare const Repl: DefineComponent<__VLS_PublicProps, {
-reload: typeof reload;
-}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export declare const Repl: DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 "update:modelValue": (modelValue: boolean) => any;
 }, string, PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
 "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
 }>, {
 ssr: boolean;
-layout: "horizontal" | "vertical";
 store: Store;
-splitPaneOptions: {
-codeTogglerText?: string;
-outputTogglerText?: string;
-};
 theme: "dark" | "light";
 previewTheme: boolean;
 autoResize: boolean;
@@ -108,6 +93,7 @@ showCompileOutput: boolean;
 showImportMap: boolean;
 showTsConfig: boolean;
 clearConsole: boolean;
+layout: "horizontal" | "vertical";
 layoutReverse: boolean;
 previewOptions: {
 headHTML?: string;
@@ -125,95 +111,11 @@ showErrorText?: string | false;
 autoSaveText?: string | false;
 monacoOptions?: monaco.editor.IStandaloneEditorConstructionOptions;
 };
-}, {}, {}, {}, string, ComponentProvideOptions, false, {
-output: CreateComponentPublicInstanceWithMixins<Readonly<{
-editorComponent: EditorComponentType;
-showCompileOutput?: boolean;
-ssr: boolean;
-}> & Readonly<{}>, {
-reload: () => void;
-previewRef: Readonly<ShallowRef<CreateComponentPublicInstanceWithMixins<Readonly<{
-show: boolean;
-ssr: boolean;
-}> & Readonly<{}>, {
-reload: () => void;
-container: Readonly<ShallowRef<HTMLDivElement | null>>;
-}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, PublicProps, {}, false, {}, {}, GlobalComponents, GlobalDirectives, string, {
-container: HTMLDivElement;
-}, any, ComponentProvideOptions, {
-P: {};
-B: {};
-D: {};
-C: {};
-M: {};
-Defaults: {};
-}, Readonly<{
-show: boolean;
-ssr: boolean;
-}> & Readonly<{}>, {
-reload: () => void;
-container: Readonly<ShallowRef<HTMLDivElement | null>>;
-}, {}, {}, {}, {}> | null>>;
-}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, PublicProps, {}, false, {}, {}, GlobalComponents, GlobalDirectives, string, {
-preview: CreateComponentPublicInstanceWithMixins<Readonly<{
-show: boolean;
-ssr: boolean;
-}> & Readonly<{}>, {
-reload: () => void;
-container: Readonly<ShallowRef<HTMLDivElement | null>>;
-}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, PublicProps, {}, false, {}, {}, GlobalComponents, GlobalDirectives, string, {
-container: HTMLDivElement;
-}, any, ComponentProvideOptions, {
-P: {};
-B: {};
-D: {};
-C: {};
-M: {};
-Defaults: {};
-}, Readonly<{
-show: boolean;
-ssr: boolean;
-}> & Readonly<{}>, {
-reload: () => void;
-container: Readonly<ShallowRef<HTMLDivElement | null>>;
-}, {}, {}, {}, {}> | null;
-}, any, ComponentProvideOptions, {
-P: {};
-B: {};
-D: {};
-C: {};
-M: {};
-Defaults: {};
-}, Readonly<{
-editorComponent: EditorComponentType;
-showCompileOutput?: boolean;
-ssr: boolean;
-}> & Readonly<{}>, {
-reload: () => void;
-previewRef: Readonly<ShallowRef<CreateComponentPublicInstanceWithMixins<Readonly<{
-show: boolean;
-ssr: boolean;
-}> & Readonly<{}>, {
-reload: () => void;
-container: Readonly<ShallowRef<HTMLDivElement | null>>;
-}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, PublicProps, {}, false, {}, {}, GlobalComponents, GlobalDirectives, string, {
-container: HTMLDivElement;
-}, any, ComponentProvideOptions, {
-P: {};
-B: {};
-D: {};
-C: {};
-M: {};
-Defaults: {};
-}, Readonly<{
-show: boolean;
-ssr: boolean;
-}> & Readonly<{}>, {
-reload: () => void;
-container: Readonly<ShallowRef<HTMLDivElement | null>>;
-}, {}, {}, {}, {}> | null>>;
-}, {}, {}, {}, {}> | null;
-}, any>;
+splitPaneOptions: {
+codeTogglerText?: string;
+outputTogglerText?: string;
+};
+}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 export declare interface ReplProps {
     theme?: 'dark' | 'light';
