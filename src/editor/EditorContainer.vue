@@ -1,9 +1,9 @@
 <script setup lang="ts">
-// import FileSelector from './FileSelector.vue'
+import FileSelector from './FileSelector.vue'
 import Message from '../Message.vue'
 import { debounce } from '../utils'
 import { inject, ref, watch } from 'vue'
-// import ToggleButton from './ToggleButton.vue'
+import ToggleButton from './ToggleButton.vue'
 import { type EditorComponentType, injectKeyProps } from '../types'
 
 const SHOW_ERROR_KEY = 'repl_show_error'
@@ -12,7 +12,7 @@ const props = defineProps<{
   editorComponent: EditorComponentType
 }>()
 
-const { store } = inject(injectKeyProps)!
+const { store, autoSave, editorOptions } = inject(injectKeyProps)!
 const showMessage = ref(getItem())
 
 const onChange = debounce((code: string) => {
@@ -34,7 +34,7 @@ watch(showMessage, () => {
 </script>
 
 <template>
-  <!-- <FileSelector /> -->
+  <FileSelector />
   <div class="editor-container">
     <props.editorComponent
       :value="store.activeFile.code"
@@ -43,7 +43,7 @@ watch(showMessage, () => {
     />
     <Message v-show="showMessage" :err="store.errors[0]" />
 
-    <!-- <div class="editor-floating">
+    <div class="editor-floating">
       <ToggleButton
         v-if="editorOptions?.showErrorText !== false"
         v-model="showMessage"
@@ -54,7 +54,7 @@ watch(showMessage, () => {
         v-model="autoSave"
         :text="editorOptions?.autoSaveText || 'Auto Save'"
       />
-    </div> -->
+    </div>
   </div>
 </template>
 
